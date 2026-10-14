@@ -13,7 +13,7 @@ Open `http://localhost:8000`.
 ## Checks
 
 ```sh
-node --test test/site.test.mjs
+node --test
 ```
 
 ## GitHub Pages
