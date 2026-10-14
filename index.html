@@ -10,8 +10,8 @@
     <meta property="og:type" content="website" />
     <title>Marcus Lin — Software & Systems</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css?v=screen-electric-1" />
-    <script type="module" src="script.js?v=screen-electric-1"></script>
+    <link rel="stylesheet" href="styles.css?v=click-only-1" />
+    <script type="module" src="script.js?v=click-only-1"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -45,7 +45,7 @@
             <div class="hero-index" aria-hidden="true"><span>SCROLL TO EXPLORE</span><span class="index-line"></span><span>01—04</span></div>
           </div>
           <div class="hero-visual">
-            <div class="portrait-frame spark-target">
+            <div class="portrait-frame">
               <img src="assets/marcus-headshot.jpg" alt="Portrait of Marcus Lin" width="760" height="760" fetchpriority="high" />
               <span class="portrait-corner corner-top" aria-hidden="true"></span>
               <span class="portrait-corner corner-bottom" aria-hidden="true"></span>
@@ -67,12 +67,12 @@
         <section class="content-section" id="experience" aria-labelledby="experience-title">
           <div class="section-heading"><div><p class="section-kicker">01 / EXPERIENCE</p><h2 id="experience-title">Where I’ve worked<span class="electric-period">.</span></h2></div><p>Building things that have to work beyond the prototype.</p></div>
           <div class="experience-list">
-            <article class="experience-row spark-target">
+            <article class="experience-row">
               <div class="row-meta"><span class="row-number">01</span><span>May — Aug 2026</span></div>
               <div class="row-main"><h3>NextEra Energy</h3><p class="role">Data Science Intern <span>· Houston, TX</span></p><p>Built a production churn prediction pipeline using Python, SQL, and XGBoost. Automated a profitability model for more than 5,000 customers, helping reduce retention spend by 27%.</p><div class="tag-list"><span>Python</span><span>SQL</span><span>XGBoost</span><span>ML pipelines</span></div></div>
               <span class="row-arrow" aria-hidden="true">↗</span>
             </article>
-            <article class="experience-row spark-target">
+            <article class="experience-row">
               <div class="row-meta"><span class="row-number">02</span><span>May — Aug 2025</span></div>
               <div class="row-main"><h3>InFLOWS AI</h3><p class="role">Software Engineer Intern <span>· Berkeley, CA</span></p><p>Benchmarked and fine-tuned open-source language models for a production sentiment pipeline. The resulting self-hosted approach cut per-inference costs by 95% while retaining 97% of the baseline F1 score.</p><div class="tag-list"><span>Python</span><span>Hugging Face</span><span>LoRA</span><span>LLM evaluation</span></div></div>
               <span class="row-arrow" aria-hidden="true">↗</span>
@@ -82,7 +82,7 @@
 
         <section class="content-section open-source-section" id="open-source" aria-labelledby="open-source-title">
           <div class="section-heading"><div><p class="section-kicker">02 / OPEN SOURCE</p><h2 id="open-source-title">Working in the open<span class="electric-period">.</span></h2></div><p>Small, precise changes that make a large system better.</p></div>
-          <article class="open-source-feature spark-target">
+          <article class="open-source-feature">
             <div class="feature-top"><span class="feature-overline">APACHE SPARK · 2026</span><span class="feature-symbol" aria-hidden="true">⌁</span></div>
             <div class="feature-grid">
               <div><h3>Contributing to a system used at scale.</h3><p>Across 5+ merged pull requests, I worked with Spark maintainers on SQL functions, data types, bug fixes, and test coverage.</p><a class="inline-link spark-target" href="https://github.com/apache/spark/pulls?q=is%3Apr+author%3Amarcuslin123" target="_blank" rel="noopener noreferrer">See my Spark pull requests <span aria-hidden="true">↗</span></a></div>
@@ -94,11 +94,11 @@
         <section class="content-section" id="projects" aria-labelledby="projects-title">
           <div class="section-heading"><div><p class="section-kicker">03 / SELECTED PROJECTS</p><h2 id="projects-title">Things I’ve built<span class="electric-period">.</span></h2></div><p>Experiments in infrastructure and energy, made real.</p></div>
           <div class="project-grid">
-            <article class="project-card spark-target">
+            <article class="project-card">
               <div class="project-art project-art-load" aria-hidden="true"><span class="load-node load-node-one"></span><span class="load-node load-node-two"></span><span class="load-node load-node-three"></span><span class="load-node load-node-four"></span><span class="load-pulse"></span><span class="art-label">75K+ REQUESTS / DISTRIBUTED</span></div>
               <div class="project-body"><div class="project-topline"><span>01 / INFRASTRUCTURE</span><a class="project-source spark-target" href="https://github.com/marcuslin123/load-tester" target="_blank" rel="noopener noreferrer" aria-label="Distributed Load Testing Platform source code">Source ↗</a></div><h3>Distributed Load Testing Platform</h3><p>A Go and gRPC system that orchestrates containerized workers to test services under sustained load, with autoscaling and observability built in.</p><div class="tag-list"><span>Go</span><span>gRPC</span><span>Kubernetes</span><span>AWS</span><span>Prometheus</span></div></div>
             </article>
-            <article class="project-card spark-target">
+            <article class="project-card">
               <div class="project-art project-art-charge" aria-hidden="true"><span class="charge-road"></span><span class="charge-station station-one"></span><span class="charge-station station-two"></span><span class="charge-station station-three"></span><span class="charge-ring"></span><span class="art-label">106 CAMPUS CHARGERS / LIVE AVAILABILITY</span></div>
               <div class="project-body"><div class="project-topline"><span>02 / ENERGY</span><a class="project-source spark-target" href="https://github.com/marcuslin123/smartcharge" target="_blank" rel="noopener noreferrer" aria-label="SmartCharge source code">Source ↗</a></div><h3>SmartCharge</h3><p>An EV charging experience that shows availability across 106 campus chargers and recommends open chargers and off-peak windows to ease congestion.</p><div class="tag-list"><span>React</span><span>FastAPI</span><span>Python</span><span>Tailwind</span></div></div>
             </article>
@@ -113,7 +113,6 @@
 
       <footer class="site-footer"><span>© <span id="year">2026</span> Marcus Lin</span><a class="spark-target" href="#top">Back to top ↑</a></footer>
     </div>
-    <div class="electric-field" aria-hidden="true"></div>
     <div class="spark-layer" aria-hidden="true"></div>
   </body>
 </html>
