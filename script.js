@@ -1,13 +1,12 @@
-import { getScrollCharge } from './energy.js';
+import { makeBoltPoints, shouldFlash } from './energy.js';
 
 const sparkLayer = document.querySelector('.spark-layer');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const finePointer = window.matchMedia('(pointer: fine)');
-const energyFill = document.querySelector('.energy-rail-fill');
-const energyHead = document.querySelector('.energy-rail-head');
-const energyRail = document.querySelector('.energy-rail');
-let scrollFrame = 0;
-let flowTimer = 0;
+const electricField = document.querySelector('.electric-field');
+let lastFlashY = window.scrollY;
+let lastFlashTime = -Infinity;
+let flashSequence = 0;
 
 function emitSpark(x, y, count = 4) {
   if (reducedMotion.matches || !sparkLayer) return;
@@ -26,6 +25,43 @@ function emitSpark(x, y, count = 4) {
   }
 }
 
+function emitPulse(x, y) {
+  if (reducedMotion.matches || !sparkLayer) return;
+  const pulse = document.createElement('span');
+  pulse.className = 'click-pulse';
+  pulse.style.left = `${x}px`;
+  pulse.style.top = `${y}px`;
+  sparkLayer.append(pulse);
+  pulse.addEventListener('animationend', () => pulse.remove(), { once: true });
+}
+
+function flashAcrossScreen() {
+  if (reducedMotion.matches || !electricField) return;
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  const points = makeBoltPoints(width, height, flashSequence++);
+  const pathData = points.map(([x, y], index) => `${index ? 'L' : 'M'}${x.toFixed(1)} ${y.toFixed(1)}`).join(' ');
+  const branchStart = points[6];
+  const branchData = `M${branchStart[0].toFixed(1)} ${branchStart[1].toFixed(1)} L${(branchStart[0] + width * 0.07).toFixed(1)} ${Math.min(height, branchStart[1] + height * 0.13).toFixed(1)} L${(branchStart[0] + width * 0.17).toFixed(1)} ${Math.min(height, branchStart[1] + height * 0.08).toFixed(1)}`;
+  const burst = document.createElement('div');
+  burst.className = 'electric-burst';
+  burst.style.setProperty('--flash-y', `${Math.round((points[6][1] / height) * 100)}%`);
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+  svg.setAttribute('preserveAspectRatio', 'none');
+  for (const [className, data] of [['bolt-glow', pathData], ['bolt-blue', pathData], ['bolt-core', pathData], ['bolt-branch', branchData]]) {
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('class', className);
+    path.setAttribute('d', data);
+    svg.append(path);
+  }
+  burst.append(svg);
+  electricField.replaceChildren(burst);
+  svg.addEventListener('animationend', (event) => {
+    if (event.target === svg) burst.remove();
+  }, { once: true });
+}
+
 document.querySelectorAll('.spark-target').forEach((element) => {
   element.addEventListener('pointerenter', (event) => {
     if (!finePointer.matches) return;
@@ -36,33 +72,29 @@ document.querySelectorAll('.spark-target').forEach((element) => {
     const bounds = element.getBoundingClientRect();
     emitSpark(bounds.left + Math.min(bounds.width - 8, 18), bounds.top + 8);
   });
-  if (element.matches('a')) {
-    element.addEventListener('click', () => {
-      const bounds = element.getBoundingClientRect();
-      emitSpark(bounds.left + bounds.width / 2, bounds.top + bounds.height / 2, 9);
-    });
-  }
 });
 
-function updateScrollCharge() {
-  scrollFrame = 0;
-  if (reducedMotion.matches || !energyFill || !energyHead) return;
-  const charge = getScrollCharge(window.scrollY, document.documentElement.scrollHeight, window.innerHeight);
-  const position = `${(charge * 100).toFixed(2)}%`;
-  energyFill.style.height = position;
-  energyHead.style.top = position;
-}
+document.addEventListener('click', (event) => {
+  const target = event.target instanceof Element ? event.target.closest('.spark-target') : null;
+  if (!target) return;
+  const bounds = target.getBoundingClientRect();
+  const x = event.detail ? event.clientX : bounds.left + bounds.width / 2;
+  const y = event.detail ? event.clientY : bounds.top + bounds.height / 2;
+  emitSpark(x, y, 13);
+  emitPulse(x, y);
+});
 
 window.addEventListener('scroll', () => {
-  if (!scrollFrame) scrollFrame = requestAnimationFrame(updateScrollCharge);
-  if (energyRail && !reducedMotion.matches) {
-    energyRail.classList.add('is-flowing');
-    window.clearTimeout(flowTimer);
-    flowTimer = window.setTimeout(() => energyRail.classList.remove('is-flowing'), 180);
-  }
+  if (reducedMotion.matches) return;
+  const now = performance.now();
+  if (!shouldFlash(lastFlashY, window.scrollY, lastFlashTime, now)) return;
+  lastFlashY = window.scrollY;
+  lastFlashTime = now;
+  flashAcrossScreen();
 }, { passive: true });
-window.addEventListener('resize', updateScrollCharge);
-updateScrollCharge();
+reducedMotion.addEventListener('change', () => {
+  if (reducedMotion.matches) electricField?.replaceChildren();
+});
 
 if ('IntersectionObserver' in window && !reducedMotion.matches) {
   const observer = new IntersectionObserver((entries) => {
@@ -72,7 +104,7 @@ if ('IntersectionObserver' in window && !reducedMotion.matches) {
       const kicker = entry.target.querySelector('.section-kicker');
       if (kicker) {
         const bounds = kicker.getBoundingClientRect();
-        emitSpark(bounds.left + 7, bounds.top + bounds.height / 2, 8);
+        emitSpark(bounds.left + 7, bounds.top + bounds.height / 2, 11);
       }
       observer.unobserve(entry.target);
     });

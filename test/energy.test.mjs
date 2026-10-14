@@ -1,15 +1,18 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { getScrollCharge } from '../energy.js';
+import { shouldFlash, makeBoltPoints } from '../energy.js';
 
-test('charge tracks readable page progress and clamps overscroll', () => {
-  assert.equal(getScrollCharge(0, 3000, 1000), 0);
-  assert.equal(getScrollCharge(1000, 3000, 1000), 0.5);
-  assert.equal(getScrollCharge(2000, 3000, 1000), 1);
-  assert.equal(getScrollCharge(-100, 3000, 1000), 0);
-  assert.equal(getScrollCharge(2500, 3000, 1000), 1);
+test('scroll flashes wait for meaningful movement and a cooldown', () => {
+  assert.equal(shouldFlash(0, 100, 0, 1000), false);
+  assert.equal(shouldFlash(0, 320, 0, 300), false);
+  assert.equal(shouldFlash(0, 320, 0, 800), true);
+  assert.equal(shouldFlash(900, 580, 1000, 1800), true);
 });
 
-test('a page without scrollable distance has no charge', () => {
-  assert.equal(getScrollCharge(0, 800, 1000), 0);
+test('a lightning path crosses the viewport without leaving its vertical bounds', () => {
+  const points = makeBoltPoints(1200, 800, 1);
+  assert.ok(points.length >= 8);
+  assert.ok(points[0][0] <= 0);
+  assert.ok(points.at(-1)[0] >= 1200);
+  assert.ok(points.every(([x, y]) => Number.isFinite(x) && y >= 0 && y <= 800));
 });
