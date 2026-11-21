@@ -1,0 +1,118 @@
+:root {
+  color-scheme: dark;
+  --paper: #080a12;
+  --ink: #f4f0ff;
+  --muted: #b8b6cb;
+  --line: #2c2b42;
+  --blue: #bdaaff;
+  --navy: #15132a;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+}
+
+body::before { display: none; }
+body { background: radial-gradient(ellipse at 76% 12%, #16112d, transparent 32rem), var(--paper); }
+.site-header { background: rgb(8 10 18 / 92%); }
+.profile-nav .resume-link, .primary-action { border-radius: 999px; }
+.profile-nav .resume-link:hover, .primary-action, .primary-action:hover { color: #100a21; }
+.primary-action { background: #ded2ff; justify-content: center; min-width: 0; }
+.primary-action:hover { background: #f0e8ff; }
+.skip-link { color: var(--paper); }
+
+.hero {
+  grid-template-columns: minmax(0, .83fr) minmax(0, 1.17fr);
+  min-height: clamp(610px, 82svh, 840px);
+  gap: 0;
+  padding: 54px 0 66px;
+}
+.hero h1 {
+  font-size: clamp(88px, 12.4vw, 192px);
+  line-height: .79;
+  letter-spacing: -.082em;
+  margin: 0 0 34px;
+}
+.hero h1 em { font-weight: inherit; }
+.eyebrow, .section-kicker { color: #c9bbfb; text-transform: uppercase; letter-spacing: .14em; }
+.hero-intro {
+  color: #d0cce2;
+  font-family: var(--sans);
+  font-size: clamp(17px, 2vw, 23px);
+  max-width: 26ch;
+  line-height: 1.55;
+  margin-bottom: 28px;
+}
+.energy-visual {
+  min-height: 460px;
+  padding: 0;
+  align-items: center;
+  background: radial-gradient(ellipse at center, #322256 0%, #201637 25%, transparent 69%);
+}
+.energy-scene { position: absolute; inset: 0; width: 100%; height: 100%; }
+.scene-control {
+  position: absolute;
+  bottom: 18px;
+  color: var(--ink);
+  background: rgb(17 14 33 / 84%);
+  border: 1px solid #72629b;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.scene-control:hover { background: #29203e; }
+.signal-strip { margin-bottom: 0; }
+.signal-label, .row-meta, .role span, .row-main > p:not(.role), .project-body > p,
+.about-side p, .site-footer { color: var(--muted); }
+
+.content-section { padding-block: clamp(80px, 12vw, 164px); }
+.section-heading { margin-bottom: clamp(32px, 6vw, 72px); }
+.section-heading h2 {
+  font-size: clamp(43px, 7.7vw, 114px);
+  line-height: .99;
+  max-width: 15ch;
+  text-wrap: balance;
+}
+.row-number, .row-arrow, .feature-symbol { display: none; }
+.experience-row { grid-template-columns: minmax(115px, .5fr) minmax(0, 1.5fr); }
+.experience-row:hover, .experience-row:focus-within { background: #11101e; padding-left: 0; }
+.role { color: #dbd0ff; }
+.tag-list span { color: #ded4f8; background: #1b172a; border-color: #39304f; border-radius: 999px; }
+.open-source-feature {
+  background: radial-gradient(ellipse at 85% 0%, #362650, transparent 70%), #151121;
+  border: 1px solid #44365d;
+  border-radius: 24px;
+}
+.contribution-list li { grid-template-columns: 1fr; }
+.contribution-list li > span { display: none; }
+.project-card { background: #131220; border-radius: 22px; }
+.project-card:hover, .project-card:focus-within { transform: none; border-color: #70608c; }
+.project-art-load { background-color: #252345; background-image: radial-gradient(#74608f 1px, transparent 1.4px); }
+.project-art-charge { background-color: #192c35; }
+.charge-road { border-color: #507176; }
+.project-topline, .art-label { color: #ccc4e5; }
+.project-topline > span { display: none; }
+.project-source { font-size: 14px; }
+.about-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(175px, 30%); gap: 22px 7%; }
+.about-section .section-heading { grid-column: 1 / -1; }
+.about-portrait {
+  grid-column: 2;
+  grid-row: 2;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 1px solid #4b415e;
+  border-radius: 22px;
+}
+.about-grid { grid-column: 1; grid-row: 2; grid-template-columns: 1fr; gap: 25px; }
+
+@media (max-width: 800px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; padding-bottom: 27px; }
+  .hero h1 { font-size: clamp(83px, 19vw, 142px); }
+  .energy-visual { margin-top: 12px; min-height: clamp(280px, 81vw, 470px); width: 100%; }
+  .scene-control { bottom: 5px; }
+}
+@media (max-width: 520px) {
+  .about-section { grid-template-columns: 1fr; }
+  .about-portrait { grid-column: 1; width: min(70%, 235px); }
+  .about-grid { grid-row: 3; }
+}
