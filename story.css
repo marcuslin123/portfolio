@@ -126,30 +126,33 @@ body { background: radial-gradient(ellipse at 76% 12%, #16112d, transparent 32re
 .cursor-effect-layer { position: fixed; inset: 0; z-index: 20; overflow: hidden; pointer-events: none; }
 .cursor-arc {
   position: absolute;
-  width: 46px;
-  height: 22px;
-  margin-top: -11px;
+  width: 72px;
+  height: 34px;
+  margin-top: -17px;
   transform-origin: 0 50%;
   transform: rotate(var(--arc-angle)) scaleY(var(--arc-flip));
-  filter: drop-shadow(0 0 3px #9b79ff);
-  animation: cursor-arc-fade 370ms ease-out both;
+  filter: drop-shadow(0 0 2px #b9a4ff) drop-shadow(0 0 6px #8b6dff);
+  animation: cursor-arc-fade 420ms ease-out both;
 }
 .cursor-arc::before, .cursor-arc::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, #f8f3ff, #c8b2ff 55%, #8cbfff);
+  background: linear-gradient(90deg, #fff, #e1d6ff 65%, #9ccfff);
 }
 .cursor-arc::before {
-  clip-path: polygon(0 50%, 25% 24%, 38% 55%, 65% 40%, 78% 66%, 100% 56%, 77% 75%, 64% 48%, 37% 65%, 24% 32%, 0 57%);
+  clip-path: polygon(
+    0 50%, 21% 22%, 30% 50%, 46% 40%, 56% 65%, 75% 35%, 82% 56%, 100% 43%,
+    82% 63%, 74% 44%, 55% 74%, 45% 48%, 29% 59%, 20% 31%, 0 57%
+  );
 }
 .cursor-arc::after {
-  opacity: .75;
-  clip-path: polygon(37% 57%, 49% 80%, 67% 86%, 75% 100%, 65% 91%, 47% 86%, 35% 62%);
+  opacity: .9;
+  clip-path: polygon(28% 51%, 38% 76%, 56% 80%, 65% 100%, 54% 86%, 36% 83%, 26% 57%);
 }
 @keyframes cursor-arc-fade {
-  0% { opacity: .95; }
-  30% { opacity: .72; }
+  0% { opacity: 1; }
+  35% { opacity: .84; }
   100% { opacity: 0; }
 }
 .section-heading { margin-bottom: clamp(32px, 6vw, 72px); }
