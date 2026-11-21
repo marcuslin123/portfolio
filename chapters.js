@@ -4,10 +4,10 @@ const chapters = chapterLinks.flatMap((link) => {
   return section ? [{ link, section }] : [];
 });
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-const cursorLayer = document.querySelector('.cursor-effect-layer');
+const rippleLayer = document.querySelector('.ripple-layer');
 let scrollFrame = 0;
 let activeChapter;
-let lastArc;
+let lastRipple;
 
 function updateChapters() {
   scrollFrame = 0;
@@ -40,26 +40,23 @@ function scheduleChapters() {
 window.addEventListener('scroll', scheduleChapters, { passive: true });
 window.addEventListener('resize', scheduleChapters);
 reducedMotion.addEventListener('change', () => {
-  cursorLayer?.replaceChildren();
-  lastArc = undefined;
+  rippleLayer?.replaceChildren();
+  lastRipple = undefined;
   scheduleChapters();
 });
 scheduleChapters();
 
 window.addEventListener('pointermove', (event) => {
-  if (reducedMotion.matches || event.pointerType !== 'mouse' || !cursorLayer) return;
+  if (reducedMotion.matches || event.pointerType !== 'mouse' || !rippleLayer) return;
   const { clientX: x, clientY: y, timeStamp: time } = event;
-  const dx = lastArc ? lastArc.x - x : -event.movementX;
-  const dy = lastArc ? lastArc.y - y : -event.movementY;
-  if (lastArc && (time - lastArc.time < 58 || Math.hypot(dx, dy) < 19)) return;
+  if (lastRipple && (time - lastRipple.time < 64 ||
+      Math.hypot(x - lastRipple.x, y - lastRipple.y) < 22)) return;
 
-  lastArc = { x, y, time };
-  const arc = document.createElement('span');
-  arc.className = 'cursor-arc';
-  arc.style.left = `${x}px`;
-  arc.style.top = `${y}px`;
-  arc.style.setProperty('--arc-angle', `${Math.atan2(dy, dx)}rad`);
-  arc.style.setProperty('--arc-flip', Math.random() < .5 ? '-1' : '1');
-  arc.addEventListener('animationend', () => arc.remove(), { once: true });
-  cursorLayer.append(arc);
+  lastRipple = { x, y, time };
+  const ripple = document.createElement('span');
+  ripple.className = 'cursor-ripple';
+  ripple.style.left = `${x}px`;
+  ripple.style.top = `${y}px`;
+  ripple.addEventListener('animationend', () => ripple.remove(), { once: true });
+  rippleLayer.append(ripple);
 }, { passive: true });

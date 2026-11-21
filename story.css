@@ -123,37 +123,20 @@ body { background: radial-gradient(ellipse at 76% 12%, #16112d, transparent 32re
 }
 .content-section .section-kicker { color: var(--blue); }
 .section-nav a[aria-current="location"] { color: var(--blue); text-decoration: underline; text-underline-offset: .42em; }
-.cursor-effect-layer { position: fixed; inset: 0; z-index: 20; overflow: hidden; pointer-events: none; }
-.cursor-arc {
+.ripple-layer { position: fixed; inset: 0; z-index: 20; overflow: hidden; pointer-events: none; }
+.cursor-ripple {
   position: absolute;
-  width: 72px;
-  height: 34px;
-  margin-top: -17px;
-  transform-origin: 0 50%;
-  transform: rotate(var(--arc-angle)) scaleY(var(--arc-flip));
-  filter: drop-shadow(0 0 2px #b9a4ff) drop-shadow(0 0 6px #8b6dff);
-  animation: cursor-arc-fade 420ms ease-out both;
+  width: 22px;
+  height: 22px;
+  margin: -11px 0 0 -11px;
+  border: 1px solid #e0d1ff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px #bdaaff45, inset 0 0 8px #bdaaff45;
+  animation: cursor-ripple 760ms ease-out both;
 }
-.cursor-arc::before, .cursor-arc::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, #fff, #e1d6ff 65%, #9ccfff);
-}
-.cursor-arc::before {
-  clip-path: polygon(
-    0 50%, 21% 22%, 30% 50%, 46% 40%, 56% 65%, 75% 35%, 82% 56%, 100% 43%,
-    82% 63%, 74% 44%, 55% 74%, 45% 48%, 29% 59%, 20% 31%, 0 57%
-  );
-}
-.cursor-arc::after {
-  opacity: .9;
-  clip-path: polygon(28% 51%, 38% 76%, 56% 80%, 65% 100%, 54% 86%, 36% 83%, 26% 57%);
-}
-@keyframes cursor-arc-fade {
-  0% { opacity: 1; }
-  35% { opacity: .84; }
-  100% { opacity: 0; }
+@keyframes cursor-ripple {
+  from { opacity: .7; transform: scale(.45); }
+  to { opacity: 0; transform: scale(4.5); }
 }
 .section-heading { margin-bottom: clamp(32px, 6vw, 72px); }
 .section-heading h2 {
@@ -218,5 +201,5 @@ body { background: radial-gradient(ellipse at 76% 12%, #16112d, transparent 32re
 }
 @media (prefers-reduced-motion: reduce) {
   .content-section::before { transform: none; }
-  .cursor-effect-layer { display: none; }
+  .ripple-layer { display: none; }
 }
