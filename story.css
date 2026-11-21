@@ -62,6 +62,10 @@ body { background: radial-gradient(ellipse at 76% 12%, #16112d, transparent 32re
   cursor: pointer;
 }
 .scene-control:hover { background: #29203e; }
+.scene-control-state { display: inline-block; width: 2ch; margin-left: .55em; color: var(--muted); }
+.scene-control[aria-pressed="true"] { border-color: #d3b5ff; background: #35224d; }
+.scene-control[aria-pressed="true"] .scene-control-state { color: #e4cfff; }
+.scene-control:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
 .signal-strip { margin-bottom: 0; }
 .signal-label, .row-meta, .role span, .row-main > p:not(.role), .project-body > p,
 .about-side p, .site-footer { color: var(--muted); }

@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&amp;family=Manrope:wght@400..800&amp;display=swap" />
-    <link rel="stylesheet" href="story.css?v=12" />
+    <link rel="stylesheet" href="story.css?v=13" />
     <script type="module" src="script.js?v=click-only-1"></script>
   </head>
   <body>
@@ -47,7 +47,9 @@
           </div>
           <div class="hero-visual energy-visual">
             <canvas class="energy-scene" aria-hidden="true"></canvas>
-            <button class="scene-control spark-target" type="button" hidden>Send a pulse</button>
+            <button class="scene-control" type="button" aria-pressed="false" hidden>
+              Shape lighting <span class="scene-control-state" aria-hidden="true">Off</span>
+            </button>
           </div>
         </section>
 
@@ -101,7 +103,7 @@
         <section class="content-section about-section" id="about" aria-labelledby="about-title">
           <div class="section-heading"><div><p class="section-kicker">About</p><h2 id="about-title">Beyond <em>the code<span class="electric-period">.</span></em></h2></div></div>
           <img class="about-portrait" src="assets/marcus-headshot.jpg" alt="Portrait of Marcus Lin" width="760" height="760" loading="lazy" />
-          <div class="about-grid"><p class="about-lead">I study Data Science and Industrial Engineering &amp; Operations Research at UC Berkeley. I’m drawn to the point where software meets real-world systems, especially in energy.</p><div class="about-side"><p>Outside work, you’ll usually find me playing basketball, lifting, following football, trying good food, or reading sci-fi and nonfiction.</p><p>I also co-founded Asia Consulting Enterprises, a Berkeley group focused on the Asian-Americas markets.</p><a class="inline-link spark-target" href="mailto:mlin23530@gmail.com">Say hello <span aria-hidden="true">↗</span></a></div></div>
+          <div class="about-grid"><p class="about-lead">I study Data Science and Industrial Engineering &amp; Operations Research at UC Berkeley. I’m drawn to the point where software meets real-world systems, especially in energy.</p><div class="about-side"><p>Outside work, you’ll usually find me playing basketball, lifting, following football, trying good food, or reading sci-fi and nonfiction.</p><a class="inline-link spark-target" href="mailto:mlin23530@gmail.com">Say hello <span aria-hidden="true">↗</span></a></div></div>
         </section>
       </main>
 
@@ -109,7 +111,7 @@
     </div>
     <div class="spark-layer" aria-hidden="true"></div>
     <div class="ripple-layer" aria-hidden="true"></div>
-    <script type="module" src="scene.js?v=3"></script>
+    <script type="module" src="scene.js?v=4"></script>
     <script type="module" src="chapters.js?v=3"></script>
   </body>
 </html>
