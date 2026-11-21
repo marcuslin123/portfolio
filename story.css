@@ -12,7 +12,7 @@
 
 body::before { display: none; }
 body { background: radial-gradient(ellipse at 76% 12%, #16112d, transparent 32rem), var(--paper); }
-.site-header { background: rgb(8 10 18 / 92%); }
+.site-header { background: var(--paper); }
 .section-nav { margin-left: 0; }
 .profile-nav { margin-left: auto; }
 .profile-nav .resume-link, .primary-action { border-radius: 999px; }
