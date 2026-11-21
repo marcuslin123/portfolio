@@ -26,27 +26,6 @@ body { background: radial-gradient(ellipse at 76% 12%, #16112d, transparent 32re
   min-height: clamp(610px, 82svh, 840px);
   gap: 0;
   padding: 54px 0 66px;
-  isolation: isolate;
-}
-.hero-field {
-  position: absolute;
-  inset: 0 calc(-1 * clamp(22px, 4.5vw, 78px));
-  z-index: -1;
-  overflow: hidden;
-  pointer-events: none;
-  background: #090e0c radial-gradient(ellipse at 76% 42%, #1d2e19, transparent 72%);
-}
-.hero-field canvas, .hero-field::after {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-.hero-field::after {
-  content: "";
-  background:
-    linear-gradient(0deg, var(--paper), transparent 19%, transparent 94%, #080a1266),
-    linear-gradient(90deg, #080a12ed 3%, #080a12d9 27%, #080a1245 58%, #080a1222);
 }
 .hero h1 {
   font-size: clamp(88px, 12.4vw, 192px);
@@ -68,7 +47,7 @@ body { background: radial-gradient(ellipse at 76% 12%, #16112d, transparent 32re
   min-height: 460px;
   padding: 0;
   align-items: center;
-  background: radial-gradient(ellipse at center, #221b36a8, transparent 69%);
+  background: radial-gradient(ellipse at center, #322256 0%, #201637 25%, transparent 69%);
 }
 .energy-scene { position: absolute; inset: 0; width: 100%; height: 100%; }
 .scene-control {
@@ -208,9 +187,6 @@ body { background: radial-gradient(ellipse at 76% 12%, #16112d, transparent 32re
   .hero h1 { font-size: clamp(83px, 19vw, 142px); }
   .energy-visual { margin-top: 12px; min-height: clamp(280px, 81vw, 470px); width: 100%; }
   .scene-control { bottom: 5px; }
-  .hero-field::after {
-    background: linear-gradient(180deg, #080a12e8, #080a12c9 48%, #080a1240 72%, var(--paper));
-  }
 }
 @media (max-width: 1180px) {
   .profile-nav { margin-inline: auto; padding-left: 0; border-left: 0; }
@@ -221,11 +197,9 @@ body { background: radial-gradient(ellipse at 76% 12%, #16112d, transparent 32re
   .about-grid { grid-row: 3; }
 }
 @media (max-width: 620px) {
-  .hero-field { inset-inline: -20px; }
   .content-section { --gutter: 20px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-field-motion { display: none; }
   .content-section::before { transform: none; }
   .ripple-layer { display: none; }
 }
