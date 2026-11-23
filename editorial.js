@@ -20,7 +20,8 @@ document.fonts.ready.then(fitHeroTitle);
 fitHeroTitle();
 
 const header = document.querySelector('.site-header');
-const sectionLinks = [...header.querySelectorAll('nav a[href^="#"]')].map((link) => ({
+const sectionNav = header.querySelector('nav');
+const sectionLinks = [...sectionNav.querySelectorAll('a[href^="#"]')].map((link) => ({
   link,
   section: document.getElementById(link.hash.slice(1)),
 })).filter(({ section }) => section);
@@ -35,10 +36,17 @@ function updateActiveSection() {
   const nextLink = atBottom
     ? sectionLinks.at(-1)?.link
     : sectionLinks.findLast(({ section }) => section.getBoundingClientRect().top <= readingLine)?.link;
-  if (nextLink === activeLink) return;
-  activeLink?.removeAttribute('aria-current');
-  nextLink?.setAttribute('aria-current', 'location');
-  activeLink = nextLink;
+  if (nextLink !== activeLink) {
+    activeLink?.removeAttribute('aria-current');
+    nextLink?.setAttribute('aria-current', 'location');
+    activeLink = nextLink;
+    sectionNav.style.setProperty('--underline-opacity', nextLink ? '1' : '0');
+  }
+  if (nextLink) {
+    const rect = nextLink.getBoundingClientRect();
+    sectionNav.style.setProperty('--underline-x', `${rect.left - sectionNav.getBoundingClientRect().left}px`);
+    sectionNav.style.setProperty('--underline-width', `${rect.width}px`);
+  }
 }
 
 function scheduleSectionUpdate() {
@@ -50,7 +58,9 @@ window.addEventListener('resize', scheduleSectionUpdate);
 window.addEventListener('pageshow', scheduleSectionUpdate);
 const sectionResize = new ResizeObserver(scheduleSectionUpdate);
 sectionResize.observe(header);
+sectionResize.observe(sectionNav);
 for (const { section } of sectionLinks) sectionResize.observe(section);
+document.fonts.ready.then(scheduleSectionUpdate);
 scheduleSectionUpdate();
 
 for (const story of document.querySelectorAll('[data-story]')) {
