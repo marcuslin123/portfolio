@@ -19,6 +19,40 @@ new ResizeObserver(fitHeroTitle).observe(heroContent.closest('.hero'));
 document.fonts.ready.then(fitHeroTitle);
 fitHeroTitle();
 
+const header = document.querySelector('.site-header');
+const sectionLinks = [...header.querySelectorAll('nav a[href^="#"]')].map((link) => ({
+  link,
+  section: document.getElementById(link.hash.slice(1)),
+})).filter(({ section }) => section);
+let activeLink;
+let sectionUpdate = 0;
+
+function updateActiveSection() {
+  sectionUpdate = 0;
+  const readingLine = header.getBoundingClientRect().bottom + window.innerHeight * .12;
+  const page = document.documentElement;
+  const atBottom = window.scrollY > 0 && window.scrollY + page.clientHeight >= page.scrollHeight - 2;
+  const nextLink = atBottom
+    ? sectionLinks.at(-1)?.link
+    : sectionLinks.findLast(({ section }) => section.getBoundingClientRect().top <= readingLine)?.link;
+  if (nextLink === activeLink) return;
+  activeLink?.removeAttribute('aria-current');
+  nextLink?.setAttribute('aria-current', 'location');
+  activeLink = nextLink;
+}
+
+function scheduleSectionUpdate() {
+  if (!sectionUpdate) sectionUpdate = requestAnimationFrame(updateActiveSection);
+}
+
+window.addEventListener('scroll', scheduleSectionUpdate, { passive: true });
+window.addEventListener('resize', scheduleSectionUpdate);
+window.addEventListener('pageshow', scheduleSectionUpdate);
+const sectionResize = new ResizeObserver(scheduleSectionUpdate);
+sectionResize.observe(header);
+for (const { section } of sectionLinks) sectionResize.observe(section);
+scheduleSectionUpdate();
+
 for (const story of document.querySelectorAll('[data-story]')) {
   const panels = [...story.children];
   const tabs = document.createElement('div');

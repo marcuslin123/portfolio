@@ -44,6 +44,7 @@ p { margin: 0; }
 .site-header nav { display: flex; gap: clamp(14px, 2.1vw, 32px); }
 .site-header a { display: inline-flex; align-items: center; min-height: 40px; text-decoration: none; }
 .site-header a:hover, .site-header a[aria-current="location"] { text-decoration: underline; }
+.site-header a[aria-current="location"] { text-decoration-thickness: 2px; text-underline-offset: .42em; }
 .resume-link { justify-self: end; }
 
 .hero {
@@ -90,6 +91,23 @@ p { margin: 0; }
 
 .editorial-content, .site-footer { max-width: 1480px; padding-inline: var(--gutter); margin-inline: auto; }
 .section { margin-block: 0; padding-block: clamp(40px, 7vw, 90px); border-bottom: 1px solid var(--line); }
+.section-intro {
+  border-top: 2px solid var(--section-rule);
+  background: var(--section-tint);
+  margin-bottom: clamp(28px, 5vw, 60px);
+  padding: clamp(18px, 4vw, 45px);
+}
+#projects { --section-rule: #754b55; --section-tint: #eae1e0; }
+#experience { --section-rule: #695b44; --section-tint: #eae4d8; }
+#open-source { --section-rule: #4b6356; --section-tint: #e2e7dd; }
+#about { --section-rule: #565970; --section-tint: #e5e4eb; }
+.section-intro h2 {
+  margin: 0;
+  font-size: clamp(44px, 8vw, 114px);
+  line-height: .92;
+  font-weight: 500;
+  letter-spacing: -.055em;
+}
 .section > h2 {
   margin: 0 0 clamp(22px, 4vw, 44px);
   font-size: 13px;
