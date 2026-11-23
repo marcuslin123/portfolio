@@ -3,115 +3,128 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#080a12" />
+    <meta name="theme-color" content="#292d35" />
     <meta name="description" content="Marcus Lin builds software across distributed systems, open source, machine learning, and energy." />
-    <meta property="og:title" content="Marcus Lin — Software & Systems" />
-    <meta property="og:description" content="Experience, open source work, and projects by Marcus Lin." />
-    <meta property="og:type" content="website" />
     <title>Marcus Lin</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css?v=full-width-header" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&amp;family=Manrope:wght@400..800&amp;display=swap" />
-    <link rel="stylesheet" href="story.css?v=13" />
-    <script type="module" src="script.js?v=click-only-1"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&amp;display=swap" />
+    <link rel="stylesheet" href="editorial.css?v=2" />
+    <script type="module" src="editorial.js?v=2"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
-      <div class="page-shell header-inner">
-        <nav class="section-nav" aria-label="Sections">
-          <a class="spark-target" href="#experience">Experience</a>
-          <a class="spark-target" href="#open-source">Open source</a>
-          <a class="spark-target" href="#projects">Projects</a>
-          <a class="spark-target" href="#about">About</a>
-        </nav>
-        <nav class="profile-nav" aria-label="Profiles and résumé">
-          <a class="spark-target" href="https://github.com/marcuslin123" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
-          <a class="spark-target" href="https://linkedin.com/in/marcuslin123" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
-          <a class="resume-link spark-target" href="assets/Marcus_Lin_Resume.pdf" target="_blank" rel="noopener noreferrer">Résumé <span aria-hidden="true">↗</span></a>
-        </nav>
-      </div>
+      <a class="wordmark" href="#top">Marcus Lin</a>
+      <nav aria-label="Sections">
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#open-source">Open source</a>
+        <a href="#about">About</a>
+      </nav>
+      <a class="resume-link" href="assets/Marcus_Lin_Resume.pdf" target="_blank" rel="noopener">Résumé</a>
     </header>
-    <div class="page-shell">
-      <main id="main">
-        <section class="hero" id="top" aria-labelledby="hero-title">
-          <div class="hero-copy">
-            <h1 id="hero-title">Marcus<br /><em>Lin</em></h1>
-            <p class="hero-intro">I build software for systems that need to work at scale.</p>
-            <div class="hero-actions">
-              <a class="primary-action spark-target" href="#experience">Explore my work</a>
-              <a class="text-action spark-target" href="mailto:mlin23530@gmail.com">Get in touch</a>
-            </div>
-          </div>
-          <div class="hero-visual energy-visual">
-            <canvas class="energy-scene" aria-hidden="true"></canvas>
-            <button class="scene-control" type="button" aria-pressed="false" hidden>
-              Shape lighting <span class="scene-control-state" aria-hidden="true">Off</span>
-            </button>
-          </div>
-        </section>
 
-        <div class="signal-strip" aria-label="Highlights">
-          <div><span class="signal-value">5+</span><span class="signal-label">Apache Spark PRs merged</span></div>
-          <div><span class="signal-value">75K+</span><span class="signal-label">concurrent requests tested</span></div>
-          <div><span class="signal-value">95%</span><span class="signal-label">lower inference cost</span></div>
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <img class="hero-photo" src="assets/marcus-headshot.jpg" alt="Portrait of Marcus Lin" width="760" height="760" fetchpriority="high" />
+        <div class="hero-content">
+          <h1 id="hero-title">Marcus Lin</h1>
+          <div class="hero-caption">
+            <a href="#projects">Explore my work <span aria-hidden="true">↓</span></a>
+          </div>
         </div>
+      </section>
 
-        <section class="content-section" id="experience" aria-labelledby="experience-title">
-          <div class="section-heading"><div><p class="section-kicker">Experience</p><h2 id="experience-title">From models to <em>production<span class="electric-period">.</span></em></h2></div></div>
-          <div class="experience-list">
-            <article class="experience-row">
-              <div class="row-meta"><span class="row-number">01</span><span>May — Aug 2026</span></div>
-              <div class="row-main"><h3>NextEra Energy</h3><p class="role">Data Science Intern <span>· Houston, TX</span></p><p>Built a production churn prediction pipeline using Python, SQL, and XGBoost. Automated a profitability model for more than 5,000 customers, helping reduce retention spend by 27%.</p><div class="tag-list"><span>Python</span><span>SQL</span><span>XGBoost</span><span>ML pipelines</span></div></div>
-              <span class="row-arrow" aria-hidden="true">↗</span>
-            </article>
-            <article class="experience-row">
-              <div class="row-meta"><span class="row-number">02</span><span>May — Aug 2025</span></div>
-              <div class="row-main"><h3>InFLOWS AI</h3><p class="role">Software Engineer Intern <span>· Berkeley, CA</span></p><p>Benchmarked and fine-tuned open-source language models for a production sentiment pipeline. The resulting self-hosted approach cut per-inference costs by 95% while retaining 97% of the baseline F1 score.</p><div class="tag-list"><span>Python</span><span>Hugging Face</span><span>LoRA</span><span>LLM evaluation</span></div></div>
-              <span class="row-arrow" aria-hidden="true">↗</span>
-            </article>
+      <div class="editorial-content">
+        <section class="section contact" aria-labelledby="contact-title">
+          <h2 id="contact-title">Get in touch</h2>
+          <div class="contact-links">
+            <a href="mailto:mlin23530@gmail.com">Email</a>
+            <a href="https://github.com/marcuslin123">GitHub</a>
+            <a href="https://linkedin.com/in/marcuslin123">LinkedIn</a>
           </div>
         </section>
 
-        <section class="content-section open-source-section" id="open-source" aria-labelledby="open-source-title">
-          <div class="section-heading"><div><p class="section-kicker">Open source</p><h2 id="open-source-title">Inside <em>Apache Spark<span class="electric-period">.</span></em></h2></div></div>
-          <article class="open-source-feature">
-            <div class="feature-top"><span class="feature-overline">APACHE SPARK · 2026</span><span class="feature-symbol" aria-hidden="true">⌁</span></div>
-            <div class="feature-grid">
-              <div><h3>Contributing to a system used at scale.</h3><p>Across 5+ merged pull requests, I worked with Spark maintainers on SQL functions, data types, bug fixes, and test coverage.</p><a class="inline-link spark-target" href="https://github.com/apache/spark/pulls?q=is%3Apr+author%3Amarcuslin123" target="_blank" rel="noopener noreferrer">See my Spark pull requests <span aria-hidden="true">↗</span></a></div>
-              <ul class="contribution-list"><li><span>01</span><div><strong>VARIANT strip nulls</strong><p>Implemented recursive null-field removal across Catalyst, JVM binary-format logic, and Spark Connect APIs.</p></div></li><li><span>02</span><div><strong>TIME aggregation</strong><p>Extended SQL AVG to support TIME while preserving nanosecond precision.</p></div></li></ul>
+        <section class="section" id="projects" aria-labelledby="projects-title">
+          <h2 id="projects-title">Projects</h2>
+          <article class="project">
+            <div class="project-media load-art" aria-hidden="true">
+              <div class="network">
+                <span class="network-hub"></span><span class="network-node"></span><span class="network-node"></span>
+                <span class="network-node"></span><span class="network-node"></span>
+              </div>
+              <div class="project-metric"><strong>75K+</strong><span>Concurrent requests tested</span></div>
+            </div>
+            <div class="project-content">
+              <div class="project-meta"><span>Distributed systems</span><a href="https://github.com/marcuslin123/load-tester">View source</a></div>
+              <h3 id="load-title">Distributed Load Testing Platform</h3>
+              <div class="project-story" data-story aria-labelledby="load-title">
+                <section id="load-problem"><h4>Problem</h4><p>To understand how a service behaves under sustained load, you need to generate enough traffic and see where performance starts to break down.</p></section>
+                <section id="load-approach"><h4>Approach</h4><p>I built a Go and gRPC system that orchestrates containerized workers, with autoscaling and Prometheus observability.</p></section>
+                <section id="load-result"><h4>Result</h4><p>The platform tested more than 75,000 concurrent requests.</p></section>
+              </div>
+              <ul class="tags" aria-label="Tools"><li>Go</li><li>gRPC</li><li>Kubernetes</li><li>AWS</li><li>Prometheus</li></ul>
+            </div>
+          </article>
+          <article class="project">
+            <div class="project-media charge-art" aria-hidden="true">
+              <span class="map-route"></span><span class="map-pin"></span><span class="map-pin"></span><span class="map-pin"></span>
+              <div class="project-metric"><strong>106</strong><span>Campus EV chargers</span></div>
+            </div>
+            <div class="project-content">
+              <div class="project-meta"><span>Energy systems</span><a href="https://github.com/marcuslin123/smartcharge">View source</a></div>
+              <h3 id="charge-title">SmartCharge</h3>
+              <div class="project-story" data-story aria-labelledby="charge-title">
+                <section id="charge-problem"><h4>Problem</h4><p>Drivers need to know which campus EV chargers are available and when stations are likely to be less crowded.</p></section>
+                <section id="charge-approach"><h4>Approach</h4><p>I built a React and FastAPI app that shows charger availability and recommends open stations and off-peak charging windows.</p></section>
+                <section id="charge-result"><h4>Result</h4><p>SmartCharge brings availability for 106 campus chargers into one place.</p></section>
+              </div>
+              <ul class="tags" aria-label="Tools"><li>React</li><li>FastAPI</li><li>Python</li><li>Tailwind</li></ul>
             </div>
           </article>
         </section>
 
-        <section class="content-section" id="projects" aria-labelledby="projects-title">
-          <div class="section-heading"><div><p class="section-kicker">Selected projects</p><h2 id="projects-title">Infrastructure <em>in action<span class="electric-period">.</span></em></h2></div></div>
-          <div class="project-grid">
-            <article class="project-card">
-              <div class="project-art project-art-load" aria-hidden="true"><span class="load-node load-node-one"></span><span class="load-node load-node-two"></span><span class="load-node load-node-three"></span><span class="load-node load-node-four"></span><span class="load-pulse"></span><span class="art-label">75K+ REQUESTS / DISTRIBUTED</span></div>
-              <div class="project-body"><div class="project-topline"><span>01 / INFRASTRUCTURE</span><a class="project-source spark-target" href="https://github.com/marcuslin123/load-tester" target="_blank" rel="noopener noreferrer" aria-label="Distributed Load Testing Platform source code">Source ↗</a></div><h3>Distributed Load Testing Platform</h3><p>A Go and gRPC system that orchestrates containerized workers to test services under sustained load, with autoscaling and observability built in.</p><div class="tag-list"><span>Go</span><span>gRPC</span><span>Kubernetes</span><span>AWS</span><span>Prometheus</span></div></div>
-            </article>
-            <article class="project-card">
-              <div class="project-art project-art-charge" aria-hidden="true"><span class="charge-road"></span><span class="charge-station station-one"></span><span class="charge-station station-two"></span><span class="charge-station station-three"></span><span class="charge-ring"></span><span class="art-label">106 CAMPUS CHARGERS / LIVE AVAILABILITY</span></div>
-              <div class="project-body"><div class="project-topline"><span>02 / ENERGY</span><a class="project-source spark-target" href="https://github.com/marcuslin123/smartcharge" target="_blank" rel="noopener noreferrer" aria-label="SmartCharge source code">Source ↗</a></div><h3>SmartCharge</h3><p>An EV charging experience that shows availability across 106 campus chargers and recommends open chargers and off-peak windows to ease congestion.</p><div class="tag-list"><span>React</span><span>FastAPI</span><span>Python</span><span>Tailwind</span></div></div>
-            </article>
+        <section class="section" id="experience" aria-labelledby="experience-title">
+          <h2 id="experience-title">Experience</h2>
+          <article class="entry">
+            <div><h3>NextEra Energy</h3><p class="entry-role">Data Science Intern · Houston, TX</p></div>
+            <div><p>Built a production churn prediction pipeline using Python, SQL, and XGBoost. Automated a profitability model for more than 5,000 customers, helping reduce retention spend by 27%.</p><p class="entry-date">May–Aug 2026</p></div>
+          </article>
+          <article class="entry">
+            <div><h3>InFLOWS AI</h3><p class="entry-role">Software Engineer Intern · Berkeley, CA</p></div>
+            <div><p>Benchmarked and fine-tuned open-source language models for a production sentiment pipeline. The self-hosted approach cut per-inference costs by 95% while retaining 97% of the baseline F1 score.</p><p class="entry-date">May–Aug 2025</p></div>
+          </article>
+        </section>
+
+        <section class="section" id="open-source" aria-labelledby="open-source-title">
+          <h2 id="open-source-title">Open source</h2>
+          <article class="entry">
+            <div><h3>Apache Spark</h3><a href="https://github.com/apache/spark/pulls?q=is%3Apr+author%3Amarcuslin123">See my pull requests</a></div>
+            <div>
+              <p>Across 5+ merged pull requests, I worked with Spark maintainers on SQL functions, data types, bug fixes, and test coverage.</p>
+              <ul class="contributions">
+                <li><strong>VARIANT strip nulls.</strong> Implemented recursive null-field removal across Catalyst, JVM binary-format logic, and Spark Connect APIs.</li>
+                <li><strong>TIME aggregation.</strong> Extended SQL AVG to support TIME while preserving nanosecond precision.</li>
+              </ul>
+            </div>
+          </article>
+        </section>
+
+        <section class="section" id="about" aria-labelledby="about-title">
+          <h2 id="about-title">About</h2>
+          <div class="entry about">
+            <p>I study Data Science and Industrial Engineering &amp; Operations Research at UC Berkeley. I’m drawn to the point where software meets real-world systems, especially in energy.</p>
+            <p>Outside work, you’ll usually find me playing basketball, lifting, following football, trying good food, or reading sci-fi and nonfiction.</p>
           </div>
         </section>
+      </div>
+    </main>
 
-        <section class="content-section about-section" id="about" aria-labelledby="about-title">
-          <div class="section-heading"><div><p class="section-kicker">About</p><h2 id="about-title">Beyond <em>the code<span class="electric-period">.</span></em></h2></div></div>
-          <img class="about-portrait" src="assets/marcus-headshot.jpg" alt="Portrait of Marcus Lin" width="760" height="760" loading="lazy" />
-          <div class="about-grid"><p class="about-lead">I study Data Science and Industrial Engineering &amp; Operations Research at UC Berkeley. I’m drawn to the point where software meets real-world systems, especially in energy.</p><div class="about-side"><p>Outside work, you’ll usually find me playing basketball, lifting, following football, trying good food, or reading sci-fi and nonfiction.</p><a class="inline-link spark-target" href="mailto:mlin23530@gmail.com">Say hello <span aria-hidden="true">↗</span></a></div></div>
-        </section>
-      </main>
-
-      <footer class="site-footer"><span>© <span id="year">2026</span> Marcus Lin</span><a class="spark-target" href="#top">Back to top ↑</a></footer>
-    </div>
-    <div class="spark-layer" aria-hidden="true"></div>
-    <div class="ripple-layer" aria-hidden="true"></div>
-    <script type="module" src="scene.js?v=4"></script>
-    <script type="module" src="chapters.js?v=3"></script>
+    <footer class="site-footer">
+      <span>© 2026 Marcus Lin</span>
+      <a href="#top">Back to top</a>
+    </footer>
   </body>
 </html>
